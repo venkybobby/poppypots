@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poppy Pots — Handcrafted Ceramic Planters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design tokens (route all colors through these) ── */
+    :root {
+      --pp-cream: #f7f3ee;
+      --pp-terracotta: #c4714a;
+      --pp-terracotta-dark: #a85a38;
+      --pp-sage: #8a9a7b;
+      --pp-sage-dark: #6d7d5f;
+      --pp-midnight: #2c3e50;
+      --pp-blush: #e8c4b8;
+      --pp-sand: #d4c4a8;
+      --pp-charcoal: #3a3a3a;
+      --pp-white: #ffffff;
+      --pp-text: var(--pp-charcoal);
+      --pp-text-muted: #6b6b6b;
+      --pp-border: #e0d8cf;
+      --pp-shadow: rgba(44, 62, 80, 0.08);
+      --pp-radius: 12px;
+      --pp-radius-sm: 8px;
+      --pp-font-display: 'Cormorant Garamond', Georgia, serif;
+      --pp-font-body: 'DM Sans', system-ui, sans-serif;
+      --pp-free-shipping-threshold: 75;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--pp-font-body);
+      background: var(--pp-cream);
+      color: var(--pp-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Free shipping bar ── */
+    .free-shipping-bar {
+      background: var(--pp-midnight);
+      color: var(--pp-white);
+      text-align: center;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .free-shipping-bar strong { color: var(--pp-blush); }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--pp-border);
+      background: var(--pp-white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: var(--pp-font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--pp-terracotta);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .logo span { color: var(--pp-sage); }
+
+    nav { display: flex; gap: 2rem; }
+
+    nav a {
+      color: var(--pp-text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--pp-terracotta); }
+
+    .cart-btn {
+      background: none;
+      border: 1.5px solid var(--pp-border);
+      border-radius: var(--pp-radius-sm);
+      padding: 0.5rem 1rem;
+      font-family: var(--pp-font-body);
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .cart-btn:hover { border-color: var(--pp-terracotta); background: var(--pp-cream); }
+
+    .cart-count {
+      background: var(--pp-terracotta);
+      color: var(--pp-white);
+      border-radius: 50%;
+      width: 1.25rem;
+      height: 1.25rem;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    /* ── Marquee ── */
+    .marquee {
+      overflow: hidden;
+      background: var(--pp-sage);
+      color: var(--pp-white);
+      padding: 0.5rem 0;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 28s linear infinite;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .marquee-track span { margin: 0 2rem; }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-family: var(--pp-font-display);
+      font-size: 3.5rem;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--pp-midnight);
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 em { color: var(--pp-terracotta); font-style: italic; }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      color: var(--pp-text-muted);
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+
+    .btn-primary {
+      background: var(--pp-terracotta);
+      color: var(--pp-white);
+      border: none;
+      border-radius: var(--pp-radius-sm);
+      padding: 0.85rem 2rem;
+      font-family: var(--pp-font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--pp-terracotta-dark); }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 1.5rem;
+      height: 360px;
+    }
+
+    .pot-preview {
+      border-radius: var(--pp-radius);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 32px var(--pp-shadow);
+    }
+
+    .pot-preview::before {
+      content: '';
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 8%;
+      background: rgba(255,255,255,0.3);
+      border-radius: 4px;
+    }
+
+    .pot-preview .pattern {
+      position: absolute;
+      inset: 20% 15% 25%;
+      opacity: 0.35;
+      border-radius: 4px;
+    }
+
+    /* ── Products ── */
+    .products-section {
+      padding: 3rem 2rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-family: var(--pp-font-display);
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--pp-midnight);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p { color: var(--pp-text-muted); }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--pp-white);
+      border-radius: var(--pp-radius);
+      overflow: hidden;
+      border: 1px solid var(--pp-border);
+      transition: box-shadow 0.25s, transform 0.25s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 12px 40px var(--pp-shadow);
+      transform: translateY(-4px);
+    }
+
+    .product-card.active { border-color: var(--pp-terracotta); }
+
+    .product-image {
+      height: 220px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image .pot-shape {
+      width: 45%;
+      height: 75%;
+      border-radius: 8px 8px 4px 4px;
+      position: relative;
+      margin-bottom: 10%;
+    }
+
+    .product-image .pot-shape::before {
+      content: '';
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65%;
+      height: 6%;
+      background: rgba(255,255,255,0.25);
+      border-radius: 3px;
+    }
+
+    .product-image .art-overlay {
+      position: absolute;
+      inset: 18% 22% 28%;
+      opacity: 0.4;
+      border-radius: 3px;
+    }
+
+    .product-info { padding: 1.25rem; }
+
+    .product-info h3 {
+      font-family: var(--pp-font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .product-info .size-label {
+      font-size: 0.8rem;
+      color: var(--pp-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+
+    .product-info .price {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--pp-terracotta);
+    }
+
+    /* ── Product detail panel ── */
+    .detail-panel {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 62, 80, 0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .detail-panel.open { display: flex; }
+
+    .detail-card {
+      background: var(--pp-white);
+      border-radius: var(--pp-radius);
+      max-width: 720px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 24px 64px rgba(44, 62, 80, 0.2);
+    }
+
+    .detail-visual {
+      padding: 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 320px;
+      border-radius: var(--pp-radius) 0 0 var(--pp-radius);
+    }
+
+    .detail-visual .pot-shape {
+      width: 50%;
+      height: 80%;
+      border-radius: 10px 10px 5px 5px;
+      position: relative;
+    }
+
+    .detail-visual .pot-shape::before {
+      content: '';
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65%;
+      height: 6%;
+      background: rgba(255,255,255,0.25);
+      border-radius: 3px;
+    }
+
+    .detail-visual .art-overlay {
+      position: absolute;
+      inset: 18% 20% 25%;
+      opacity: 0.4;
+      border-radius: 4px;
+    }
+
+    .detail-content { padding: 2rem; }
+
+    .detail-content h2 {
+      font-family: var(--pp-font-display);
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .detail-content .detail-price {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--pp-terracotta);
+      margin-bottom: 1.5rem;
+    }
+
+    .option-group { margin-bottom: 1.25rem; }
+
+    .option-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--pp-text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .swatches { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .swatch {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .swatch:hover { transform: scale(1.1); }
+    .swatch.selected { border-color: var(--pp-midnight); }
+
+    .art-options { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .art-btn {
+      padding: 0.4rem 0.85rem;
+      border: 1.5px solid var(--pp-border);
+      border-radius: var(--pp-radius-sm);
+      background: var(--pp-white);
+      font-family: var(--pp-font-body);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .art-btn:hover { border-color: var(--pp-sage); }
+    .art-btn.selected { border-color: var(--pp-terracotta); background: var(--pp-cream); }
+
+    .detail-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-secondary {
+      background: none;
+      border: 1.5px solid var(--pp-border);
+      border-radius: var(--pp-radius-sm);
+      padding: 0.85rem 1.5rem;
+      font-family: var(--pp-font-body);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--pp-midnight); }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--pp-white);
+      border: none;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px var(--pp-shadow);
+      z-index: 10;
+    }
+
+    /* ── Cart drawer ── */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100vh;
+      background: var(--pp-white);
+      box-shadow: -4px 0 24px var(--pp-shadow);
+      z-index: 300;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-drawer.open { right: 0; }
+
+    .cart-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--pp-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header h3 {
+      font-family: var(--pp-font-display);
+      font-size: 1.5rem;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--pp-border);
+    }
+
+    .cart-item-swatch {
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--pp-radius-sm);
+      flex-shrink: 0;
+    }
+
+    .cart-item-info { flex: 1; }
+    .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+    .cart-item-info .variant { font-size: 0.8rem; color: var(--pp-text-muted); }
+    .cart-item-info .item-price { font-weight: 600; color: var(--pp-terracotta); margin-top: 0.25rem; }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: var(--pp-text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.25rem;
+    }
+
+    .cart-item-remove:hover { color: var(--pp-terracotta); }
+
+    .cart-empty {
+      text-align: center;
+      color: var(--pp-text-muted);
+      padding: 3rem 1rem;
+    }
+
+    .cart-footer {
+      padding: 1.5rem;
+      border-top: 1px solid var(--pp-border);
+    }
+
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .shipping-note {
+      font-size: 0.8rem;
+      color: var(--pp-text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .shipping-note.qualified { color: var(--pp-sage-dark); font-weight: 500; }
+
+    .btn-checkout {
+      width: 100%;
+      background: var(--pp-midnight);
+      color: var(--pp-white);
+      border: none;
+      border-radius: var(--pp-radius-sm);
+      padding: 1rem;
+      font-family: var(--pp-font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-checkout:hover { background: var(--pp-charcoal); }
+
+    /* ── Demo checkout modal ── */
+    .checkout-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 62, 80, 0.6);
+      z-index: 400;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .checkout-modal.open { display: flex; }
+
+    .checkout-card {
+      background: var(--pp-white);
+      border-radius: var(--pp-radius);
+      padding: 2.5rem;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .checkout-card h2 {
+      font-family: var(--pp-font-display);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--pp-midnight);
+    }
+
+    .checkout-card p { color: var(--pp-text-muted); margin-bottom: 1.5rem; }
+
+    .demo-badge {
+      display: inline-block;
+      background: var(--pp-blush);
+      color: var(--pp-midnight);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--pp-midnight);
+      color: var(--pp-white);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    footer .logo { color: var(--pp-blush); margin-bottom: 0.5rem; display: inline-block; }
+    footer p { font-size: 0.85rem; opacity: 0.7; }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 62, 80, 0.4);
+      z-index: 250;
+    }
+
+    .overlay.open { display: block; }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 2rem 1.25rem; }
+      .hero-text h1 { font-size: 2.5rem; }
+      .hero-visual { height: 240px; }
+      .detail-card { grid-template-columns: 1fr; }
+      .detail-visual { min-height: 200px; border-radius: var(--pp-radius) var(--pp-radius) 0 0; }
+      nav { display: none; }
+      .cart-drawer { width: 100%; right: -100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="free-shipping-bar" id="freeShippingBar">
+    Free shipping on orders over <strong>$75</strong> — <span id="shippingProgress">add items to qualify</span>
+  </div>
+
+  <header>
+    <a href="#" class="logo">Poppy <span>Pots</span></a>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#care">Care</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+      Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Pots that let your <em>plants</em> shine</h1>
+      <p>Hand-glazed ceramic planters in six colors and three artisan patterns. Made in small batches for homes that love greenery.</p>
+      <button class="btn-primary" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop the collection</button>
+    </div>
+    <div class="hero-visual" id="heroVisual"></div>
+  </section>
+
+  <section class="products-section" id="shop">
+    <div class="section-header">
+      <h2>The Collection</h2>
+      <p>Three sizes · six glazes · three patterns — pick your combination</p>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <section class="products-section" id="about" style="padding-top:0">
+    <div class="section-header">
+      <h2>About Poppy Pots</h2>
+      <p>Small-batch ceramics glazed by hand in Nova Scotia. Each pot is food-safe, frost-resistant, and built with a drainage hole.</p>
+    </div>
+  </section>
+
+  <section class="products-section" id="care" style="padding-top:0;padding-bottom:3rem">
+    <div class="section-header">
+      <h2>Plant Care</h2>
+      <p>Wipe with a damp cloth. Avoid harsh cleaners. Re-glaze every 3–5 years for outdoor use.</p>
+    </div>
+  </section>
+
+  <footer>
+    <a href="#" class="logo">Poppy <span>Pots</span></a>
+    <p>Demo storefront — not a live checkout. © 2026 Poppy Pots</p>
+  </footer>
+
+  <!-- Product detail -->
+  <div class="detail-panel" id="detailPanel">
+    <div style="position:relative">
+      <button class="close-btn" id="detailClose" aria-label="Close">&times;</button>
+      <div class="detail-card">
+        <div class="detail-visual" id="detailVisual">
+          <div class="pot-shape" id="detailPot"><div class="art-overlay" id="detailArt"></div></div>
+        </div>
+        <div class="detail-content">
+          <h2 id="detailName"></h2>
+          <div class="detail-price" id="detailPrice"></div>
+          <div class="option-group">
+            <label>Color</label>
+            <div class="swatches" id="colorSwatches"></div>
+          </div>
+          <div class="option-group">
+            <label>Pattern</label>
+            <div class="art-options" id="artOptions"></div>
+          </div>
+          <div class="detail-actions">
+            <button class="btn-primary" id="addToCartBtn">Add to cart</button>
+            <button class="btn-secondary" id="detailCloseBtn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart -->
+  <div class="overlay" id="overlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-btn" id="cartClose" aria-label="Close cart" style="position:static;box-shadow:none">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Your cart is empty</div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="shipping-note" id="cartShippingNote"></div>
+      <button class="btn-checkout" id="checkoutBtn">Checkout (Demo)</button>
+    </div>
+  </div>
+
+  <!-- Demo checkout -->
+  <div class="checkout-modal" id="checkoutModal">
+    <div class="checkout-card">
+      <div class="demo-badge">Demo Only</div>
+      <h2>Thank you!</h2>
+      <p>This is a demo storefront. No payment was processed and no order was placed. Connect Shopify to go live.</p>
+      <button class="btn-primary" id="checkoutCloseBtn">Back to shop</button>
+    </div>
+  </div>
+
+  <script>
+    // ── Free shipping threshold (keep in sync with shopify/snippets/pp-free-shipping-bar.liquid) ──
+    const FREE_SHIPPING_THRESHOLD = 75;
+
+    // ── COLORS: glaze palette — keys used in SKU and variant titles ──
+    const COLORS = {
+      terracotta: { name: 'Terracotta', hex: '#c4714a' },
+      sage:       { name: 'Sage',       hex: '#8a9a7b' },
+      cream:      { name: 'Cream',      hex: '#f7f3ee' },
+      midnight:   { name: 'Midnight',   hex: '#2c3e50' },
+      blush:      { name: 'Blush',      hex: '#e8c4b8' },
+      sand:       { name: 'Sand',       hex: '#d4c4a8' },
+    };
+
+    // ── ART: surface patterns applied as CSS overlays ──
+    const ART = {
+      speckle: {
+        name: 'Speckle',
+        css: 'repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.5) 0 1px, transparent 1px 6px), repeating-radial-gradient(circle at 70% 60%, rgba(0,0,0,0.08) 0 1px, transparent 1px 5px)',
+      },
+      stripe: {
+        name: 'Stripe',
+        css: 'repeating-linear-gradient(135deg, rgba(255,255,255,0.3) 0 3px, transparent 3px 10px)',
+      },
+      arc: {
+        name: 'Arc',
+        css: 'radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.35) 0%, transparent 70%)',
+      },
+    };
+
+    // ── PRODUCTS: catalog — SKU pattern PP-{SIZE}-{COLOR}-{ART} ──
+    const PRODUCTS = [
+      { id: 'bud',   name: 'Bud Pot',   size: 'S', sizeLabel: 'Small · 4"',  price: 24, height: 120 },
+      { id: 'bloom', name: 'Bloom Pot', size: 'M', sizeLabel: 'Medium · 6"', price: 36, height: 160 },
+      { id: 'grove', name: 'Grove Pot', size: 'L', sizeLabel: 'Large · 8"',  price: 52, height: 200 },
+    ];
+
+    const DEFAULT_COLOR = 'terracotta';
+    const DEFAULT_ART = 'speckle';
+
+    let cart = [];
+    let activeProduct = null;
+    let selectedColor = DEFAULT_COLOR;
+    let selectedArt = DEFAULT_ART;
+
+    const formatPrice = (n) => '$' + n.toFixed(2);
+
+    const buildSku = (product, colorKey, artKey) =>
+      `PP-${product.size}-${colorKey.toUpperCase()}-${artKey.toUpperCase()}`;
+
+    const getColorHex = (key) => COLORS[key]?.hex || COLORS.terracotta.hex;
+
+    const applyPotStyle = (el, colorKey, artKey) => {
+      el.style.background = getColorHex(colorKey);
+      const artEl = el.querySelector('.art-overlay') || el;
+      if (el.querySelector('.art-overlay')) {
+        el.querySelector('.art-overlay').style.background = ART[artKey]?.css || '';
+      }
+    };
+
+    // ── Render hero pots ──
+    const renderHero = () => {
+      const container = document.getElementById('heroVisual');
+      const combos = [
+        { color: 'terracotta', art: 'speckle', h: 200, w: 90 },
+        { color: 'sage',       art: 'stripe',  h: 260, w: 110 },
+        { color: 'blush',      art: 'arc',     h: 180, w: 80 },
+      ];
+      container.innerHTML = combos.map(c => `
+        <div class="pot-preview" style="width:${c.w}px;height:${c.h}px;background:${getColorHex(c.color)}">
+          <div class="pattern" style="background:${ART[c.art].css}"></div>
+        </div>
+      `).join('');
+    };
+
+    // ── Marquee ──
+    const renderMarquee = () => {
+      const items = ['Free shipping over $75', 'Hand-glazed in Nova Scotia', 'Six colors · three patterns', 'Small-batch ceramics'];
+      const track = document.getElementById('marqueeTrack');
+      const text = items.map(s => `<span>${s}</span>`).join('');
+      track.innerHTML = text + text;
+    };
+
+    // ── Product grid ──
+    const renderProducts = () => {
+      document.getElementById('productGrid').innerHTML = PRODUCTS.map(p => `
+        <div class="product-card" data-id="${p.id}" onclick="openDetail('${p.id}')">
+          <div class="product-image" style="background:var(--pp-cream)">
+            <div class="pot-shape" style="background:${getColorHex(DEFAULT_COLOR)}">
+              <div class="art-overlay" style="background:${ART[DEFAULT_ART].css}"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>${p.name}</h3>
+            <div class="size-label">${p.sizeLabel}</div>
+            <div class="price">From ${formatPrice(p.price)}</div>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    // ── Detail panel ──
+    const openDetail = (productId) => {
+      activeProduct = PRODUCTS.find(p => p.id === productId);
+      selectedColor = DEFAULT_COLOR;
+      selectedArt = DEFAULT_ART;
+      document.getElementById('detailName').textContent = activeProduct.name;
+      document.getElementById('detailPrice').textContent = formatPrice(activeProduct.price);
+      updateDetailVisual();
+      renderColorSwatches();
+      renderArtOptions();
+      document.getElementById('detailPanel').classList.add('open');
+    };
+
+    const updateDetailVisual = () => {
+      const pot = document.getElementById('detailPot');
+      const art = document.getElementById('detailArt');
+      const visual = document.getElementById('detailVisual');
+      pot.style.background = getColorHex(selectedColor);
+      art.style.background = ART[selectedArt]?.css || '';
+      visual.style.background = 'var(--pp-cream)';
+    };
+
+    const renderColorSwatches = () => {
+      document.getElementById('colorSwatches').innerHTML = Object.entries(COLORS).map(([key, c]) => `
+        <button class="swatch${key === selectedColor ? ' selected' : ''}"
+                style="background:${c.hex}"
+                title="${c.name}"
+                onclick="selectColor('${key}')"
+                aria-label="${c.name}"></button>
+      `).join('');
+    };
+
+    const renderArtOptions = () => {
+      document.getElementById('artOptions').innerHTML = Object.entries(ART).map(([key, a]) => `
+        <button class="art-btn${key === selectedArt ? ' selected' : ''}"
+                onclick="selectArt('${key}')">${a.name}</button>
+      `).join('');
+    };
+
+    const selectColor = (key) => { selectedColor = key; updateDetailVisual(); renderColorSwatches(); };
+    const selectArt = (key) => { selectedArt = key; updateDetailVisual(); renderArtOptions(); };
+
+    const closeDetail = () => document.getElementById('detailPanel').classList.remove('open');
+
+    // ── Cart ──
+    const addToCart = () => {
+      if (!activeProduct) return;
+      const item = {
+        id: `${activeProduct.id}-${selectedColor}-${selectedArt}`,
+        name: activeProduct.name,
+        color: COLORS[selectedColor].name,
+        art: ART[selectedArt].name,
+        colorKey: selectedColor,
+        price: activeProduct.price,
+        sku: buildSku(activeProduct, selectedColor, selectedArt),
+      };
+      const existing = cart.find(c => c.id === item.id);
+      if (existing) existing.qty += 1;
+      else cart.push({ ...item, qty: 1 });
+      closeDetail();
+      renderCart();
+      openCart();
+    };
+
+    const removeFromCart = (id) => {
+      cart = cart.filter(c => c.id !== id);
+      renderCart();
+    };
+
+    const cartSubtotal = () => cart.reduce((sum, c) => sum + c.price * c.qty, 0);
+
+    const renderCart = () => {
+      const count = cart.reduce((s, c) => s + c.qty, 0);
+      document.getElementById('cartCount').textContent = count;
+
+      const itemsEl = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        itemsEl.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+      } else {
+        itemsEl.innerHTML = cart.map(c => `
+          <div class="cart-item">
+            <div class="cart-item-swatch" style="background:${getColorHex(c.colorKey)}"></div>
+            <div class="cart-item-info">
+              <h4>${c.name}</h4>
+              <div class="variant">${c.color} · ${c.art} · ${c.sku}</div>
+              <div class="item-price">${formatPrice(c.price)} × ${c.qty}</div>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart('${c.id}')" aria-label="Remove">&times;</button>
+          </div>
+        `).join('');
+      }
+
+      const sub = cartSubtotal();
+      document.getElementById('cartSubtotal').textContent = formatPrice(sub);
+
+      const shipNote = document.getElementById('cartShippingNote');
+      const barProgress = document.getElementById('shippingProgress');
+      if (sub >= FREE_SHIPPING_THRESHOLD) {
+        shipNote.textContent = 'You qualify for free shipping!';
+        shipNote.className = 'shipping-note qualified';
+        barProgress.textContent = 'you qualify for free shipping!';
+      } else if (sub > 0) {
+        const remaining = FREE_SHIPPING_THRESHOLD - sub;
+        shipNote.textContent = `Add ${formatPrice(remaining)} more for free shipping`;
+        shipNote.className = 'shipping-note';
+        barProgress.textContent = `${formatPrice(remaining)} away from free shipping`;
+      } else {
+        shipNote.textContent = '';
+        barProgress.textContent = 'add items to qualify';
+      }
+    };
+
+    const openCart = () => {
+      document.getElementById('cartDrawer').classList.add('open');
+      document.getElementById('overlay').classList.add('open');
+    };
+
+    const closeCart = () => {
+      document.getElementById('cartDrawer').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+    };
+
+    const openCheckout = () => {
+      if (cart.length === 0) return;
+      closeCart();
+      document.getElementById('checkoutModal').classList.add('open');
+    };
+
+    const closeCheckout = () => document.getElementById('checkoutModal').classList.remove('open');
+
+    // ── Event listeners ──
+    document.getElementById('cartBtn').addEventListener('click', openCart);
+    document.getElementById('cartClose').addEventListener('click', closeCart);
+    document.getElementById('overlay').addEventListener('click', closeCart);
+    document.getElementById('detailClose').addEventListener('click', closeDetail);
+    document.getElementById('detailCloseBtn').addEventListener('click', closeDetail);
+    document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+    document.getElementById('checkoutBtn').addEventListener('click', openCheckout);
+    document.getElementById('checkoutCloseBtn').addEventListener('click', closeCheckout);
+
+    // ── Init ──
+    renderHero();
+    renderMarquee();
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>

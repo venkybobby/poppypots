@@ -1,0 +1,115 @@
+{% comment %}
+  Poppy Pots — scrolling marquee banner
+  Usage: add to theme via Customize → Add section → pp-marquee
+{% endcomment %}
+
+{%- style -%}
+  .pp-marquee {
+    overflow: hidden;
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: {{ section.settings.padding }}px 0;
+  }
+  .pp-marquee__track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: pp-marquee-scroll {{ section.settings.speed }}s linear infinite;
+    font-size: {{ section.settings.font_size }}px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pp-marquee__track span { margin: 0 2rem; }
+  @keyframes pp-marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+{%- endstyle -%}
+
+<div class="pp-marquee" role="presentation" aria-hidden="true">
+  <div class="pp-marquee__track">
+    {%- for block in section.blocks -%}
+      <span>{{ block.settings.text }}</span>
+    {%- endfor -%}
+    {%- for block in section.blocks -%}
+      <span>{{ block.settings.text }}</span>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PP Marquee",
+  "tag": "section",
+  "class": "pp-marquee-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#8a9a7b"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Vertical padding",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "default": 13,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds)",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "default": 28,
+      "unit": "s"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Message text",
+          "default": "Free shipping over $75"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PP Marquee",
+      "blocks": [
+        { "type": "message", "settings": { "text": "Free shipping over $75" } },
+        { "type": "message", "settings": { "text": "Hand-glazed in Nova Scotia" } },
+        { "type": "message", "settings": { "text": "Six colors · three patterns" } },
+        { "type": "message", "settings": { "text": "Small-batch ceramics" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,54 @@
+{% comment %}
+  Poppy Pots — free shipping progress bar
+  KEEP IN SYNC: threshold must match FREE_SHIPPING_THRESHOLD in site/index.html
+  Current threshold: $75
+{% endcomment %}
+
+{%- assign pp_free_shipping_threshold = 7500 -%}{%- comment -%} cents {%- endcomment -%}
+
+{%- style -%}
+  .pp-shipping-bar {
+    background: #2c3e50;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .pp-shipping-bar strong { color: #e8c4b8; }
+  .pp-shipping-bar__progress {
+    margin-top: 0.35rem;
+    height: 3px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pp-shipping-bar__fill {
+    height: 100%;
+    background: #8a9a7b;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+{%- endstyle -%}
+
+{%- if cart.total_price >= pp_free_shipping_threshold -%}
+  <div class="pp-shipping-bar">
+    You qualify for <strong>free shipping</strong>!
+  </div>
+{%- elsif cart.item_count > 0 -%}
+  {%- assign remaining = pp_free_shipping_threshold | minus: cart.total_price -%}
+  {%- assign progress = cart.total_price | times: 100 | divided_by: pp_free_shipping_threshold -%}
+  <div class="pp-shipping-bar">
+    Add <strong>{{ remaining | money }}</strong> more for free shipping on orders over <strong>$75</strong>
+    <div class="pp-shipping-bar__progress">
+      <div class="pp-shipping-bar__fill" style="width: {{ progress }}%"></div>
+    </div>
+  </div>
+{%- else -%}
+  <div class="pp-shipping-bar">
+    Free shipping on orders over <strong>$75</strong>
+  </div>
+{%- endif -%}
