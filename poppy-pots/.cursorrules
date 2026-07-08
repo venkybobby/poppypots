@@ -1,0 +1,33 @@
+# Poppy Pots — Cursor rules
+
+## General
+
+- Changed-code-only: edit only files required by the task
+- Stay in scope: no unrequested features, dependencies, or files
+- Ask, don't assume: clarify ambiguous requirements before building
+- Simplest solution first: smallest correct diff, no premature abstraction
+- End responses with FILES CHANGED / NOT TOUCHED / CONCERNS summary
+
+## Project invariants
+
+- Demo site is a single file: site/index.html (no splitting unless asked)
+- Route all colors through CSS custom properties (var(--pp-*))
+- Catalog data lives in PRODUCTS, COLORS, ART objects in index.html
+- SKU pattern: PP-{SIZE}-{COLOR}-{PATTERN}
+- Free shipping threshold $75 — sync site/index.html FREE_SHIPPING_THRESHOLD and shopify/snippets/pp-free-shipping-bar.liquid pp_free_shipping_threshold
+- Demo checkout is a modal only — never wire real payments into the demo
+
+## Adding a product
+
+1. Add to PRODUCTS (and COLORS/ART if needed) in site/index.html
+2. Add variant rows to shopify/poppy-pots-products.csv following SKU pattern
+3. Verify in browser and against CSV
+
+## Key files
+
+- site/index.html — demo storefront
+- shopify/poppy-pots-products.csv — Shopify product import
+- shopify/snippets/pp-free-shipping-bar.liquid — shipping bar
+- shopify/sections/pp-marquee.liquid — scrolling banner
+- README.md — architecture and design tokens
+- AGENTS.md — full dev conventions

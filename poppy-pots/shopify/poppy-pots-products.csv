@@ -1,0 +1,55 @@
+Handle,Title,Body (HTML),Vendor,Type,Tags,Published,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Variant SKU,Variant Price,Variant Inventory Qty,Variant Inventory Policy,Variant Requires Shipping,Variant Taxable
+bud-pot,Bud Pot,"<p>Our smallest planter — perfect for succulents and starter herbs. 4"" diameter, drainage hole included.</p>",Poppy Pots,Planter,"ceramic, planter, handmade",TRUE,Color,Terracotta,Pattern,Speckle,PP-S-TERRACOTTA-SPECKLE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Terracotta,,Stripe,PP-S-TERRACOTTA-STRIPE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Terracotta,,Arc,PP-S-TERRACOTTA-ARC,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Sage,,Speckle,PP-S-SAGE-SPECKLE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Sage,,Stripe,PP-S-SAGE-STRIPE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Sage,,Arc,PP-S-SAGE-ARC,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Cream,,Speckle,PP-S-CREAM-SPECKLE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Cream,,Stripe,PP-S-CREAM-STRIPE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Cream,,Arc,PP-S-CREAM-ARC,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Midnight,,Speckle,PP-S-MIDNIGHT-SPECKLE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Midnight,,Stripe,PP-S-MIDNIGHT-STRIPE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Midnight,,Arc,PP-S-MIDNIGHT-ARC,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Blush,,Speckle,PP-S-BLUSH-SPECKLE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Blush,,Stripe,PP-S-BLUSH-STRIPE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Blush,,Arc,PP-S-BLUSH-ARC,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Sand,,Speckle,PP-S-SAND-SPECKLE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Sand,,Stripe,PP-S-SAND-STRIPE,24,25,deny,TRUE,TRUE
+bud-pot,,,,,,,,Sand,,Arc,PP-S-SAND-ARC,24,25,deny,TRUE,TRUE
+bloom-pot,Bloom Pot,"<p>Mid-size ceramic pot for ferns, pothos, and tabletop greenery. 6"" diameter with hand-applied glaze.</p>",Poppy Pots,Planter,"ceramic, planter, handmade",TRUE,Color,Terracotta,Pattern,Speckle,PP-M-TERRACOTTA-SPECKLE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Terracotta,,Stripe,PP-M-TERRACOTTA-STRIPE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Terracotta,,Arc,PP-M-TERRACOTTA-ARC,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Sage,,Speckle,PP-M-SAGE-SPECKLE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Sage,,Stripe,PP-M-SAGE-STRIPE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Sage,,Arc,PP-M-SAGE-ARC,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Cream,,Speckle,PP-M-CREAM-SPECKLE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Cream,,Stripe,PP-M-CREAM-STRIPE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Cream,,Arc,PP-M-CREAM-ARC,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Midnight,,Speckle,PP-M-MIDNIGHT-SPECKLE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Midnight,,Stripe,PP-M-MIDNIGHT-STRIPE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Midnight,,Arc,PP-M-MIDNIGHT-ARC,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Blush,,Speckle,PP-M-BLUSH-SPECKLE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Blush,,Stripe,PP-M-BLUSH-STRIPE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Blush,,Arc,PP-M-BLUSH-ARC,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Sand,,Speckle,PP-M-SAND-SPECKLE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Sand,,Stripe,PP-M-SAND-STRIPE,36,25,deny,TRUE,TRUE
+bloom-pot,,,,,,,,Sand,,Arc,PP-M-SAND-ARC,36,25,deny,TRUE,TRUE
+grove-pot,Grove Pot,"<p>Statement planter for floor plants and small trees. 8"" diameter, frost-resistant glaze for indoor/outdoor use.</p>",Poppy Pots,Planter,"ceramic, planter, handmade",TRUE,Color,Terracotta,Pattern,Speckle,PP-L-TERRACOTTA-SPECKLE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Terracotta,,Stripe,PP-L-TERRACOTTA-STRIPE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Terracotta,,Arc,PP-L-TERRACOTTA-ARC,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Sage,,Speckle,PP-L-SAGE-SPECKLE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Sage,,Stripe,PP-L-SAGE-STRIPE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Sage,,Arc,PP-L-SAGE-ARC,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Cream,,Speckle,PP-L-CREAM-SPECKLE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Cream,,Stripe,PP-L-CREAM-STRIPE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Cream,,Arc,PP-L-CREAM-ARC,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Midnight,,Speckle,PP-L-MIDNIGHT-SPECKLE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Midnight,,Stripe,PP-L-MIDNIGHT-STRIPE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Midnight,,Arc,PP-L-MIDNIGHT-ARC,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Blush,,Speckle,PP-L-BLUSH-SPECKLE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Blush,,Stripe,PP-L-BLUSH-STRIPE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Blush,,Arc,PP-L-BLUSH-ARC,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Sand,,Speckle,PP-L-SAND-SPECKLE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Sand,,Stripe,PP-L-SAND-STRIPE,52,25,deny,TRUE,TRUE
+grove-pot,,,,,,,,Sand,,Arc,PP-L-SAND-ARC,52,25,deny,TRUE,TRUE
