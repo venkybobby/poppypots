@@ -20,6 +20,9 @@ poppy-pots/
     └── SHOPIFY-SETUP.md
 ```
 
-**Open the demo:** `poppy-pots/site/index.html`
+**Open the demo:**
+
+- Live: https://venkybobby.github.io/poppypots/
+- Local: `poppy-pots/site/index.html` (double-click or open in browser)
 
 **Full docs:** [`poppy-pots/README.md`](poppy-pots/README.md)
